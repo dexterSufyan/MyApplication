@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.myapplication">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="Cricket Mania"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".RequestEvent"></activity>
+        <activity android:name=".NavigationDrawer" />
+        <activity android:name=".Base" />
+        <activity android:name=".AddEvent" />
+        <activity android:name=".EventDetails" />
+        <activity android:name=".Addteam" />
+        <activity android:name=".PlayerList" />
+        <activity android:name=".Addplayer" />
+        <activity android:name=".MatchDetails" />
+        <activity android:name=".newgame" />
+        <activity android:name=".teamprofile" />
+        <activity android:name=".groundprofile" />
+        <activity android:name=".onlinemain" />
+        <activity
+            android:name=".userprofile"
+            android:theme="@style/online" />
+        <activity android:name=".dashboard" />
+        <activity android:name=".Playgame" />
+        <activity android:name=".Signup" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".Login" />
+        <activity android:name=".splashscreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#0D74C7"
+    android:id="@+id/relative1"
+    tools:context=".MainActivity"
+    >
+<ImageView
+    android:id="@+id/logo"
+    android:layout_width="150dp"
+    android:layout_height="150dp"
+    android:layout_centerHorizontal="true"
+    android:layout_marginBottom="15dp"
+    android:src="@drawable/logo"
+    android:layout_above="@id/offlineuse"
+    android:scaleType="fitEnd"/>
+
+
+    <Button
+        android:id="@+id/offlineuse"
+        android:layout_width="200dp"
+        android:layout_centerInParent="true"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="10dp"
+        android:background="#1C296B"
+        android:text="Offline Use"
+        android:textColor="@color/white" />
+</RelativeLayout>

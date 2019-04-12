@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "856761663116",
+    "firebase_url": "https://cricket-mania-ba4d9.firebaseio.com",
+    "project_id": "cricket-mania-ba4d9",
+    "storage_bucket": "cricket-mania-ba4d9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:856761663116:android:13c3c6a65bcbec53",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "856761663116-1pp1h76me3ph8shi7nurer5hsoubufp2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.myapplication",
+            "certificate_hash": "3d440071a7b5651fe7b3b4ee26c6ad1d9fd9553a"
+          }
+        },
+        {
+          "client_id": "856761663116-e5hueaaj0qgrbb6ho7a4sh0nferde7n9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkVgOrsZLzrftFwX4y-iz1etsw1SaQtJ4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "856761663116-e5hueaaj0qgrbb6ho7a4sh0nferde7n9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

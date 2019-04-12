@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#0D74C7"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:padding="10dp"
+                android:src="@drawable/img_register"
+                android:tint="@color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="Match Details"
+                android:textColor="@color/white"
+                android:textSize="22sp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerInParent="true">
+            <RelativeLayout
+                android:id="@+id/relativeLayout1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imageView1"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="30dp">
+
+                <TextView
+                    android:id="@+id/tv_team1"
+                    android:layout_width="95dp"
+                    android:layout_height="40dp"
+                    android:text="Team A:"
+                    android:textSize="20sp"
+                    android:padding="8dp"
+                    android:background="#0D74C7"
+                    android:textColor="@color/white" />
+
+                <EditText
+                    android:id="@+id/et_team1"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_alignBottom="@+id/imgView_userIcon"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_toRightOf="@+id/tv_team1"
+                    android:background="#F2F2F7"
+                    android:hint="Team name"
+                    android:inputType="text"
+                    android:paddingLeft="20dp"
+                    android:textSize="20sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/relativeLayout1"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="30dp">
+
+                <TextView
+                    android:id="@+id/tv_team2"
+                    android:layout_width="95dp"
+                    android:layout_height="40dp"
+                    android:text="Team B:"
+                    android:textSize="20sp"
+                    android:padding="8dp"
+                    android:background="#0D74C7"
+                    android:textColor="@color/white" />
+                <EditText
+                    android:id="@+id/et_team2"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_alignBottom="@+id/imgView_passwordIcon"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@+id/tv_team2"
+                    android:background="#F2F2F7"
+                    android:hint="Team name"
+                    android:inputType="text"
+                    android:paddingLeft="20dp"
+                    android:textSize="20sp" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/relativeLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/relativeLayout2"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="30dp">
+
+                <TextView
+                    android:id="@+id/tv_Over"
+                    android:layout_width="95dp"
+                    android:layout_height="40dp"
+                    android:text="Overs:  "
+                    android:textSize="20sp"
+                    android:padding="8dp"
+                    android:background="#0D74C7"
+                    android:textColor="@color/white" />
+                <EditText
+                    android:id="@+id/et_over"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@+id/tv_Over"
+                    android:background="#F2F2F7"
+                    android:hint="Overs"
+                    android:inputType="number"
+                    android:paddingLeft="20dp"
+                    android:textSize="20sp" />
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/relativeLayout4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/relativeLayout3"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="30dp">
+
+                <TextView
+                    android:id="@+id/tv_venue"
+                    android:layout_width="95dp"
+                    android:layout_height="40dp"
+                    android:text="Venue :  "
+                    android:textSize="20sp"
+                    android:padding="8dp"
+                    android:background="#0D74C7"
+                    android:textColor="@color/white" />
+
+                <EditText
+                    android:id="@+id/et_venue"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_alignBottom="@+id/imgView_emailIcon"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@+id/tv_venue"
+                    android:background="#F2F2F7"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"
+                    android:paddingLeft="20dp"
+                    android:textSize="20sp" />
+
+            </RelativeLayout>
+        </LinearLayout>
+        <Button
+            android:id="@+id/btn_toss"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearLayout2"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="30dp"
+            android:background="#0D74C7"
+            android:fontFamily="sans-serif-medium"
+            android:text="Start toss"
+            android:onClick="Click"
+            android:textColor="@color/white" />
+
+
+
+
+
+</RelativeLayout>
