@@ -16,8 +16,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class Login extends AppCompatActivity {
-EditText Et_Email;
-EditText Et_Pass;
+    EditText Et_Email;
+    EditText Et_Pass;
     Button login;
     Button signup;
     FirebaseAuth auth;
@@ -32,22 +32,19 @@ EditText Et_Pass;
 
         init();
 
-        if (user != null) {
+       /* if (user != null) {
             startActivity(new Intent(this, onlinemain.class));
-        }
+        }*/
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String email = Et_Email.getText().toString();
                 String pass = Et_Pass.getText().toString();
-                if(email.isEmpty())
-                {
-                Et_Email.setError("Email required");
-                }
-                else if (pass.isEmpty())
-                {
-                Et_Pass.setError("Password required");
+                if (email.isEmpty()) {
+                    Et_Email.setError("Email required");
+                } else if (pass.isEmpty()) {
+                    Et_Pass.setError("Password required");
                 }
 
                 LoginUser(email, pass);
@@ -85,17 +82,16 @@ EditText Et_Pass;
     }
 
 
-
     private void init() {
 
-        Et_Email=findViewById(R.id.et_username);
-        Et_Pass=findViewById(R.id.et_pass);
-        login=findViewById(R.id.btn_Login_user);
-        signup=findViewById(R.id.btn_User_signup);
+        Et_Email = findViewById(R.id.et_username);
+        Et_Pass = findViewById(R.id.et_pass);
+        login = findViewById(R.id.btn_Login_user);
+        signup = findViewById(R.id.btn_User_signup);
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
 
     }
 
-    }
+}
 

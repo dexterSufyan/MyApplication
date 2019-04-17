@@ -3,12 +3,11 @@ package com.example.myapplication;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
-import android.location.Address;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -43,6 +42,7 @@ public class Addteam extends AppCompatActivity {
     FirebaseStorage storage;
     StorageReference imageRef;
     Button addteam;
+    String uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +60,7 @@ public class Addteam extends AppCompatActivity {
                 String TeamId = playerRef.push().getKey();
                 String CaptainId = captainRef.push().getKey();
                 imageRef = storage.getReference("Team images/" + TeamId);
+                uid=auth.getCurrentUser().getUid();
 
 
                 uploaddata(teamname, address, teamemail, contact, captain, TeamId, CaptainId);
@@ -93,10 +94,13 @@ public class Addteam extends AppCompatActivity {
                         if ((task.isSuccessful())) {
                             String imageUrl = task.getResult().toString();
                             getteamviewlist team = new getteamviewlist(imageUrl,teamname,address,contact,teamemail,captain,teamId);
-                            playerRef.child(teamId).setValue(team);
-                            captainRef.child(teamId).child("Captain").child(CaptainId).child("id").setValue(CaptainId);
-                            captainRef.child(teamId).child("Captain").child(CaptainId).child("name").setValue(captain);
 
+                            playerRef.child(uid).child("Team").child(teamId).setValue(team);
+                            captainRef.child(uid).child("Team").child(teamId).child("Captain").child(CaptainId).child("id").setValue(CaptainId);
+                            captainRef.child(uid).child("Team").child(teamId).child("Captain").child(CaptainId).child("name").setValue(CaptainId);
+                           /* captainRef.child(teamId).child("Captain").child(CaptainId).child("id").setValue(CaptainId);
+                            captainRef.child(teamId).child("Captain").child(CaptainId).child("name").setValue(captain);
+*/
 
 
                         }
@@ -143,7 +147,7 @@ public class Addteam extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
         firebaseDatabase = FirebaseDatabase.getInstance();
-        playerRef = firebaseDatabase.getReference("Teams");
+        playerRef = firebaseDatabase.getReference("users");
         captainRef=playerRef;
     }
 }

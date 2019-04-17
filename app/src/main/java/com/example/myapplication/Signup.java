@@ -60,8 +60,7 @@ DatabaseReference reference;
                 if (task.isSuccessful()) {
                     String id=user.getUid();
                     saveData(id,email,name,Address,Contact);
-                    Toast.makeText(Signup.this, "signup", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(Signup.this, onlinemain.class));
+
                 } else {
                     Toast.makeText(Signup.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
                 }
@@ -72,7 +71,22 @@ DatabaseReference reference;
 
     private void saveData(String id, String email, String name, String address, String contact) {
         User user=new User(id,name,email,address,contact);
-        reference.child(id).setValue(user);
+        reference.child(id).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()){
+
+                    Toast.makeText(Signup.this, "signup", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(Signup.this, onlinemain.class));
+
+                }
+
+                else {
+
+                    Toast.makeText(Signup.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
 

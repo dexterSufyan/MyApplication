@@ -9,6 +9,10 @@ String teamname;
     String captainName;
     String teamId;
 
+
+    public getteamviewlist() {
+    }
+
     public getteamviewlist(String teampic, String teamname, String address, String contact, String email, String captainName, String teamId) {
         this.teampic = teampic;
         this.teamname = teamname;

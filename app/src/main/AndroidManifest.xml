@@ -16,7 +16,7 @@
         <activity android:name=".EventDetails" />
         <activity android:name=".Addteam" />
         <activity android:name=".PlayerList" />
-        <activity android:name=".Addplayer" />
+        <activity android:name=".splashscreen" />
         <activity android:name=".MatchDetails" />
         <activity android:name=".newgame" />
         <activity android:name=".teamprofile" />
@@ -30,7 +30,7 @@
         <activity android:name=".Signup" />
         <activity android:name=".MainActivity" />
         <activity android:name=".Login" />
-        <activity android:name=".splashscreen">
+        <activity android:name=".Addplayer">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

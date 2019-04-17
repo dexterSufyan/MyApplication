@@ -4,23 +4,26 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.google.android.gms.auth.api.signin.internal.Storage;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -43,6 +46,7 @@ public class Addplayer extends AppCompatActivity {
     FirebaseStorage storage;
     StorageReference imageRef;
     Button addplayer;
+    String teamId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,20 +90,56 @@ public class Addplayer extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Uri> task) {
                         if ((task.isSuccessful())) {
-                            String imageUrl = task.getResult().toString();
+                            final String imageUrl = task.getResult().toString();
 
-                            Player player = new Player(playerId, nameplayer, nameteam, typeplayer, imageUrl);
-                            Toast.makeText(Addplayer.this, "complete " + playerId, Toast.LENGTH_SHORT).show();
-                            playerRef.child(playerId).setValue(player).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            playerRef.addChildEventListener(new ChildEventListener() {
                                 @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if (task.isSuccessful()) {
-                                        Toast.makeText(Addplayer.this, "added in db" + playerId, Toast.LENGTH_SHORT).show();
-                                        //   startActivity(new Intent(Addplayer.this, PlayerList.class));
-                                    } else
-                                        Toast.makeText(Addplayer.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
+                                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                    getteamviewlist team=dataSnapshot.getValue(getteamviewlist.class);
+                                    teamId=team.getTeamId();
+                                    Log.e("Add player ","team Id "+dataSnapshot);
+                                    Log.e("Add player ","team Id "+teamId);
+
+                                    Player player = new Player(playerId, nameplayer, nameteam, typeplayer, imageUrl);
+                                    Toast.makeText(Addplayer.this, "complete " + playerId, Toast.LENGTH_SHORT).show();
+                                    playerRef.child(teamId).child("Players").child(playerId).setValue(player).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                Toast.makeText(Addplayer.this, "added in db" + playerId, Toast.LENGTH_SHORT).show();
+                                                //   startActivity(new Intent(Addplayer.this, PlayerList.class));
+                                            } else
+                                                Toast.makeText(Addplayer.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+
+                                }
+
+                                @Override
+                                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                }
+
+                                @Override
+                                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                                }
+
+                                @Override
+                                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError databaseError) {
+
                                 }
                             });
+
+
+                            Log.e("Add player ","team Id 2  "+teamId);
+
 
                         } else Toast.makeText(Addplayer.this, task
                                 .getException().toString(), Toast.LENGTH_SHORT).show();
@@ -144,7 +184,7 @@ public class Addplayer extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
         firebaseDatabase = FirebaseDatabase.getInstance();
-        playerRef = firebaseDatabase.getReference("Players");
+        playerRef = firebaseDatabase.getReference("users").child(auth.getCurrentUser().getUid()).child("Team");
 
     }
 }
