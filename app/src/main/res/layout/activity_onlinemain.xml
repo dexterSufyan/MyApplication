@@ -5,7 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".onlinemain">
-
+    <Button
+        android:id="@+id/add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_alignParentEnd="true"
+        android:visibility="gone"
+        android:background="@drawable/ic_add"
+        android:clickable="false"
+        android:text="Add"/>
         <android.support.design.widget.BottomNavigationView
             android:id="@+id/btm_nv"
             android:layout_width="match_parent"
@@ -23,4 +32,5 @@
         android:layout_height="match_parent">
 
     </FrameLayout>
+
 </RelativeLayout>

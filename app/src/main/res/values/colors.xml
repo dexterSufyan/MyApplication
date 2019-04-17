@@ -23,6 +23,9 @@
     <color name="transparent">#00000000</color>
     <color name="textColor">#6e6e6e</color>
     <color name="white">#FFFFFF</color>
-    <color name="editTextBG">#DADADA</color>
+    <color name="editTextBG">#172240</color>
+    <color name="bgcolor">#1D2C55</color>
+    <color name="btncolor">#E22F1E</color>
+    <color name="checkcolor">#E0E8F0</color>
     <color name="bg">#559EE0</color>
 </resources>

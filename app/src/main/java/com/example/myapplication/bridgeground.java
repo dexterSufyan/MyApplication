@@ -30,9 +30,9 @@ Context ground;
     @Override
     public void onBindViewHolder(@NonNull groundViewholder groundViewholder, int i) {
         getgroundviewlist ground = getgroundviewlists.get(i);
-        groundViewholder.groundpic.setImageResource(ground.getGroundpic());
+        //groundViewholder.groundpic.setImageResource(ground.getGroundpic());
         groundViewholder.groundname.setText(ground.getGroundname());
-        groundViewholder.groundAdd.setText(ground.getGroundaddress());
+        groundViewholder.groundAdd.setText(ground.getAddress());
     }
 
     @Override

@@ -1,21 +1,37 @@
 package com.example.myapplication;
 
 public class getgroundviewlist {
-    int groundpic;
+    String groundpic;
     String groundname;
-    String groundaddress;
+    String address;
+    String email;
+    String contact,groundId;
 
-    public getgroundviewlist(int groundpic, String groundname, String groundaddress) {
-        this.groundpic = groundpic;
-        this.groundname = groundname;
-        this.groundaddress = groundaddress;
+    public String getEmail() {
+        return email;
     }
 
-    public int getGroundpic() {
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public getgroundviewlist(String groundpic, String groundname, String address, String email, String contact, String groundId) {
+        this.groundpic = groundpic;
+        this.groundname = groundname;
+        this.address = address;
+        this.email = email;
+        this.contact = contact;
+        this.groundId = groundId;
+    }
+
+
+
+
+    public String getGroundpic() {
         return groundpic;
     }
 
-    public void setGroundpic(int groundpic) {
+    public void setGroundpic(String groundpic) {
         this.groundpic = groundpic;
     }
 
@@ -27,11 +43,27 @@ public class getgroundviewlist {
         this.groundname = groundname;
     }
 
-    public String getGroundaddress() {
-        return groundaddress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setGroundaddress(String groundaddress) {
-        this.groundaddress = groundaddress;
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
+
+    public String getGroundId() {
+        return groundId;
+    }
+
+    public void setGroundId(String groundId) {
+        this.groundId = groundId;
     }
 }

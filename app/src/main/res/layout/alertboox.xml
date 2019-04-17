@@ -11,26 +11,12 @@
         android:layout_centerHorizontal="true"
        android:text="Start new match"/>
 
-    <Button
-        android:id="@+id/addteam"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/newgame"
-        android:layout_centerHorizontal="true"
-        android:text="Add team"/>
 
-    <Button
-        android:id="@+id/addplayer"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/addteam"
-        android:layout_centerHorizontal="true"
-        android:text="Add player"/>
     <Button
         android:id="@+id/AddEvent"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/addplayer"
+        android:layout_below="@+id/newgame"
         android:layout_centerHorizontal="true"
         android:text="Add Event"/>
 

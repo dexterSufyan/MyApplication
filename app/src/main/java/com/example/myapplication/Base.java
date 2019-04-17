@@ -82,7 +82,7 @@ public class Base extends AppCompatActivity {
                         startActivity(new Intent(Base.this,onlinemain.class));
                         break;
 
-                    case R.id.notifications:
+                    case R.id.Notification:
                         showFragment(new Notification());
                         break;
 

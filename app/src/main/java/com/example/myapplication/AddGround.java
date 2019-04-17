@@ -4,10 +4,10 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,57 +28,56 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
 
-public class Addteam extends AppCompatActivity {
-    EditText Address, Teamname, Contact, Email, Captainname;
+public class AddGround extends AppCompatActivity {
+    EditText Address, Groundname, Contact, Email, Captainname;
     ImageView Profile;
     private static final int Pick_image = 1;
     FirebaseAuth auth;
     FirebaseDatabase firebaseDatabase;
     FirebaseUser user;
-    DatabaseReference playerRef;
     DatabaseReference captainRef;
+    DatabaseReference groundRef;
+    DatabaseReference playerRef;
     private Uri imageUri;
-    //ImageView profile;
+    ImageView profile;
     FirebaseStorage storage;
     StorageReference imageRef;
-    Button addteam;
+    Button addground;
     String uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_addteam);
-        init();
-        addteam.setOnClickListener(new View.OnClickListener() {
+        setContentView(R.layout.activity_add_ground);
+        addground.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String teamname = Teamname.getText().toString();
+                String groundname = Groundname.getText().toString();
                 String address = Address.getText().toString();
-                String captain = Captainname.getText().toString();
                 String contact = Contact.getText().toString();
-                String teamemail = Email.getText().toString();
-                String TeamId = playerRef.push().getKey();
-                String CaptainId = captainRef.push().getKey();
-                imageRef = storage.getReference("Team images/" + TeamId);
+                String Groundemail = Email.getText().toString();
+                String GroundId = groundRef.push().getKey();
+                //String CaptainId = captainRef.push().getKey();
+                imageRef = storage.getReference("Ground images/" + GroundId);
                 uid=auth.getCurrentUser().getUid();
 
 
-                uploaddata(teamname, address, teamemail, contact, captain, TeamId, CaptainId);
-                Toast.makeText(Addteam.this, "Team added", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(Addteam.this,onlinemain.class));
+                uploaddata(groundname, address, Groundemail,contact,GroundId);
+                Toast.makeText(AddGround.this, "Ground added", Toast.LENGTH_SHORT).show();
+                //startActivity(new Intent(AddGround.this,onlinemain.class));
             }
         });
 
-        Profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                opengallery(v);
-            }
-        });
+Profile.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        opengallery(v);
+    }
+});
 
     }
 
-    private void uploaddata(final String teamname, final String address, final String teamemail, final String contact, final String captain, final String teamId, final String CaptainId) {
+    private void uploaddata(final String groundname,final String address,final String groundemail, final String contact, final String groundId) {
 
         BitmapDrawable drawable = (BitmapDrawable) Profile.getDrawable();
         Bitmap bitmap = drawable.getBitmap();
@@ -93,11 +92,11 @@ public class Addteam extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Uri> task) {
                         if ((task.isSuccessful())) {
                             String imageUrl = task.getResult().toString();
-                            getteamviewlist team = new getteamviewlist(imageUrl,teamname,address,contact,teamemail,captain,teamId);
+                            getgroundviewlist ground = new getgroundviewlist(imageUrl,groundname,address,groundemail,contact,groundId);
 
-                            playerRef.child(uid).child("Team").child(teamId).setValue(team);
-                            captainRef.child(uid).child("Team").child(teamId).child("Captain").child(CaptainId).child("id").setValue(CaptainId);
-                            captainRef.child(uid).child("Team").child(teamId).child("Captain").child(CaptainId).child("name").setValue(CaptainId);
+                            groundRef.child(uid).child("Grounds").child(groundId).setValue(ground);
+                            //captainRef.child(uid).child("Team").child(teamId).child("Captain").child(CaptainId).child("id").setValue(CaptainId);
+                            //captainRef.child(uid).child("Team").child(teamId).child("Captain").child(CaptainId).child("name").setValue(CaptainId);
                            /* captainRef.child(teamId).child("Captain").child(CaptainId).child("id").setValue(CaptainId);
                             captainRef.child(teamId).child("Captain").child(CaptainId).child("name").setValue(captain);
 */
@@ -116,6 +115,7 @@ public class Addteam extends AppCompatActivity {
         });
 
     }
+
 
     public void opengallery(View view) {
 
@@ -137,17 +137,16 @@ public class Addteam extends AppCompatActivity {
 
     private void init() {
         Contact = findViewById(R.id.Et_sign_contact);
-        Teamname = findViewById(R.id.Et_sign_username);
+        Groundname = findViewById(R.id.Et_sign_username);
         Address = findViewById(R.id.Et_sign_address);
         Email = findViewById(R.id.Et_sign_email);
-        Captainname = findViewById(R.id.Et_sign_Captain);
-        addteam = findViewById(R.id.btn_addteam);
-        Profile = findViewById(R.id.team_img);
+        addground = findViewById(R.id.btn_ground);
+        Profile = findViewById(R.id.Ground_img);
         storage = FirebaseStorage.getInstance();
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
         firebaseDatabase = FirebaseDatabase.getInstance();
-        playerRef = firebaseDatabase.getReference("users");
-        captainRef=playerRef;
+        groundRef = firebaseDatabase.getReference("Ground");
+        //captainRef=playerRef;
     }
 }

@@ -117,8 +117,8 @@ public class Home extends Fragment {
 
 
 
-        groundlist.add(new getgroundviewlist(R.drawable.img_profile,"gymkhanna","garden east"));
-        groundlist.add(new getgroundviewlist(R.drawable.img_profile,"ali academy","garden west"));
+        //groundlist.add(new getgroundviewlist(R.drawable.img_profile,"gymkhanna","garden east"));
+       // groundlist.add(new getgroundviewlist(R.drawable.img_profile,"ali academy","garden west"));
 
         //eventlist.add(new geteventviewlist(R.drawable.img_profile,"tournament","url"));
         ground= new bridgeground(groundlist,getContext());

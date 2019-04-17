@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bgcolor"
-    tools:context=".Addplayer">
+    tools:context=".AddGround">
+
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    >
+
     <ImageView
         android:id="@+id/img_logo"
         android:layout_width="100dp"
@@ -15,56 +23,37 @@
         android:src="@drawable/header"/>
 
     <TextView
+        android:id="@+id/txthead"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Player"
-        android:layout_below="@id/img_logo"
-        android:layout_marginTop="50dp"
+        android:text="Add Ground"
+        android:layout_marginTop="10dp"
         android:textSize="40dp"
+        android:layout_below="@+id/img_logo"
         android:textColor="@color/white"
         android:layout_centerHorizontal="true"/>
 
-
     <RelativeLayout
-        android:id="@+id/relativeLayout1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_centerInParent="true"
-        android:layout_marginRight="30dp">
+        android:layout_height="500dp"
+        android:layout_below="@+id/txthead"
+        android:padding="20dp">
 
         <ImageView
-            android:id="@+id/profile_img"
-            android:layout_width="150dp"
-            android:layout_height="70dp"
-            android:layout_alignParentTop="true"
+            android:id="@+id/Ground_img"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"
             android:src="@drawable/ic_camera_alt_black_24dp" />
 
-
         <EditText
-            android:id="@+id/Et_Playername"
+            android:id="@+id/Et_sign_username"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:layout_below="@+id/profile_img"
-            android:layout_alignBottom="@+id/imgView_userIcon"
-            android:layout_toRightOf="@+id/imgView_userIcon"
+            android:layout_below="@id/team_img"
             android:background="@color/editTextBG"
-            android:hint="Player Name"
-            android:layout_marginBottom="5dp"
-            android:paddingLeft="20dp"
-            android:textSize="15sp" />
-
-
-        <EditText
-            android:id="@+id/Et_Teamname"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@color/editTextBG"
-            android:layout_below="@+id/Et_Playername"
-            android:hint="Team Name"
+            android:hint="Ground Name"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
             android:layout_marginBottom="5dp"
@@ -74,18 +63,50 @@
 
 
 
-
         <EditText
-            android:id="@+id/Et_PlayerType"
+            android:id="@+id/Et_sign_address"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:hint="Player Type"
+            android:layout_below="@id/Et_sign_username"
+            android:background="@color/editTextBG"
+            android:hint="Address"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
             android:layout_marginBottom="5dp"
+            android:inputType="textPostalAddress"
+            android:paddingLeft="20dp"
+            android:textSize="15sp" />
+
+
+
+        <EditText
+            android:id="@+id/Et_sign_email"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginBottom="5dp"
+            android:layout_below="@id/Et_sign_address"
             android:background="@color/editTextBG"
-            android:layout_below="@id/Et_Teamname"
-            android:inputType="text"
+            android:hint="Email"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:inputType="textEmailAddress"
+            android:paddingLeft="20dp"
+            android:textSize="15sp" />
+
+
+
+
+        <EditText
+            android:id="@+id/Et_sign_contact"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@id/Et_sign_email"
+            android:background="@color/editTextBG"
+            android:hint="Contact"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:layout_marginBottom="5dp"
+            android:inputType="number"
             android:paddingLeft="20dp"
             android:textSize="15sp" />
 
@@ -95,16 +116,17 @@
             android:id="@+id/chkBox1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/Et_PlayerType"
+            android:layout_below="@id/Et_sign_contact"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="15dp"
             android:layout_marginRight="30dp"
+            android:checked="false"
             android:fontFamily="sans-serif"
             android:text="I agree to the Terms of Service"
             android:textColor="@color/checkcolor" />
 
         <Button
-            android:id="@+id/btn_addplayer"
+            android:id="@+id/btn_ground"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/chkBox1"
@@ -113,9 +135,16 @@
             android:layout_marginRight="30dp"
             android:background="@color/btncolor"
             android:fontFamily="sans-serif-medium"
-            android:text="Add Player"
+            android:text="Add Ground"
             android:textColor="@color/white" />
 
+
+
     </RelativeLayout>
+
+
+
 </RelativeLayout>
 
+
+    </ScrollView>

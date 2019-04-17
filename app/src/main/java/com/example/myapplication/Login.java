@@ -51,7 +51,6 @@ public class Login extends AppCompatActivity {
 
                 Et_Email.setText("");
                 Et_Pass.setText("");
-
             }
         });
 
@@ -72,7 +71,7 @@ public class Login extends AppCompatActivity {
 
                 if (task.isSuccessful()) {
                     Toast.makeText(Login.this, "Login", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(Login.this, Home.class));
+                    startActivity(new Intent(Login.this, onlinemain.class));
                 } else {
                     Toast.makeText(Login.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
                 }

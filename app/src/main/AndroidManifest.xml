@@ -9,19 +9,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RequestEvent"></activity>
+        <activity android:name=".AddGround"></activity>
+        <activity android:name=".RequestEvent" />
         <activity android:name=".NavigationDrawer" />
         <activity android:name=".Base" />
         <activity android:name=".AddEvent" />
         <activity android:name=".EventDetails" />
         <activity android:name=".Addteam" />
         <activity android:name=".PlayerList" />
-        <activity android:name=".splashscreen" />
+        <activity android:name=".Addplayer" />
         <activity android:name=".MatchDetails" />
         <activity android:name=".newgame" />
         <activity android:name=".teamprofile" />
         <activity android:name=".groundprofile" />
-        <activity android:name=".onlinemain" />
+        <activity android:name=".Login" />
         <activity
             android:name=".userprofile"
             android:theme="@style/online" />
@@ -29,8 +30,8 @@
         <activity android:name=".Playgame" />
         <activity android:name=".Signup" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".Login" />
-        <activity android:name=".Addplayer">
+        <activity android:name=".splashscreen" />
+        <activity android:name=".onlinemain">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -26,23 +26,13 @@ Button addteam,addplayer,Newgame,addevent;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        addteam=container.findViewById(R.id.addteam);
-        addplayer=container.findViewById(R.id.addplayer);
+        //addteam=container.findViewById(R.id.addteam);
+        //addplayer=container.findViewById(R.id.addplayer);
         Newgame=container.findViewById(R.id.newgame);
         addevent=container.findViewById(R.id.AddEvent);
         // Inflate the layout for this fragment
-      addteam.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View v) {
-              startActivity(new Intent(getContext(),Addteam.class));
-          }
-      });
-      addplayer.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View v) {
-              startActivity(new Intent(getContext(),Addplayer.class));
-          }
-      });
+
+
       Newgame.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
