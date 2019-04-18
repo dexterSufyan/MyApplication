@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/splash_background"
+    android:background="@color/bgcolor"
     android:id="@+id/splash_container"
     android:orientation="vertical"
     tools:context=".splashscreen">
@@ -17,15 +17,6 @@
         android:scaleType="fitXY"
         android:layout_centerHorizontal="true"
         android:layout_centerInParent="true"
-        android:src="@drawable/cricket_logo"/>
-    <TextView
-        android:id="@+id/tagline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/darkblue_dark"
-        android:text="Cricket Mera junoon"
-        android:layout_below="@id/logo"
-        android:textSize="20sp"
-        android:layout_centerHorizontal="true"/>
+        android:src="@drawable/splashscreen"/>
 
 </RelativeLayout>

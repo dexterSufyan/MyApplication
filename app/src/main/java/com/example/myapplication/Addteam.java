@@ -65,7 +65,7 @@ public class Addteam extends AppCompatActivity {
 
                 uploaddata(teamname, address, teamemail, contact, captain, TeamId, CaptainId);
                 Toast.makeText(Addteam.this, "Team added", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(Addteam.this,onlinemain.class));
+                startActivity(new Intent(Addteam.this,Addplayer.class));
             }
         });
 

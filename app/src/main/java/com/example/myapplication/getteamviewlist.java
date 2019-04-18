@@ -1,14 +1,14 @@
 package com.example.myapplication;
 
 public class getteamviewlist {
-String teampic;
-String teamname;
+    String teampic;
+    String teamname;
     String address;
     String contact;
     String email;
     String captainName;
     String teamId;
-
+    float avgRating;
 
     public getteamviewlist() {
     }
@@ -21,6 +21,14 @@ String teamname;
         this.email = email;
         this.captainName = captainName;
         this.teamId = teamId;
+    }
+
+    public float getAvgRating() {
+        return avgRating;
+    }
+
+    public void setAvgRating(float avgRating) {
+        this.avgRating = avgRating;
     }
 
     public String getTeampic() {

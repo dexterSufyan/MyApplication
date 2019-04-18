@@ -44,7 +44,7 @@ public class NavigationDrawer extends AppCompatActivity {
                         startActivity(new Intent(NavigationDrawer.this, onlinemain.class));
                         break;
 
-                    case R.id.notifications:
+                    case R.id.Notification:
                         showFragment(new Notification());
                         break;
                     /*case R.id.settings:

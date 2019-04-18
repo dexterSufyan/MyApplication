@@ -10,7 +10,7 @@
         android:id="@+id/cover_pic"
         android:layout_width="match_parent"
         android:layout_height="210dp"
-        android:background="@drawable/profile" />
+        android:background="@drawable/bg" />
 
     <ScrollView
         android:layout_width="match_parent"

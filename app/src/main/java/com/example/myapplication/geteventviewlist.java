@@ -6,6 +6,9 @@ public class geteventviewlist {
     String event_url;
     String eventId;
 
+    public geteventviewlist() {
+    }
+
     public String getEventpic() {
         return eventpic;
     }

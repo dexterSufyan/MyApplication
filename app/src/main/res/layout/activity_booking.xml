@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".booking">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bgcolor">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            >
+
+            <ImageView
+                android:id="@+id/img_logo"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/header" />
+
+            <TextView
+                android:id="@+id/txthead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/img_logo"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="Match booking"
+                android:textColor="@color/white"
+                android:textSize="40dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                android:layout_below="@+id/txthead"
+                android:padding="20dp">
+
+                <ImageView
+                    android:id="@+id/Ground_img"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/ic_camera_alt_black_24dp" />
+
+                <EditText
+                    android:id="@+id/Et_sender_team"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@id/team_img"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/editTextBG"
+                    android:hint="Team Name "
+                    android:inputType="text"
+                    android:paddingLeft="20dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textSize="15sp" />
+
+
+                <EditText
+                    android:id="@+id/Et_date"
+                    android:layout_width="250dp"
+                    android:layout_height="40dp"
+                    android:layout_below="@id/Et_sender_team"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/editTextBG"
+                    android:hint="Date"
+                    android:inputType="textPostalAddress"
+                    android:paddingLeft="20dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textSize="15sp" />
+
+
+                <EditText
+                    android:id="@+id/Et_time"
+                    android:layout_width="250dp"
+                    android:layout_height="40dp"
+                    android:layout_below="@id/Et_date"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/editTextBG"
+                    android:hint="Time"
+                    android:inputType="textEmailAddress"
+                    android:paddingLeft="20dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textSize="15sp" />
+
+
+                <EditText
+                    android:id="@+id/Et_venue"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@id/Et_time"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/editTextBG"
+                    android:hint="Venue"
+                    android:inputType="number"
+                    android:paddingLeft="20dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textSize="15sp" />
+
+                <Button
+                    android:id="@+id/btn_datepick"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/Et_sender_team"
+                    android:layout_toRightOf="@id/Et_date"
+                    android:text="Select date" />
+
+                <Button
+                    android:id="@+id/btn_timepick"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/btn_datepick"
+                    android:layout_toRightOf="@id/Et_date"
+                    android:text="Select Time" />
+
+                <Button
+                    android:id="@+id/btn_confirm"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/Et_venue"
+
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@color/btncolor"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="confirm"
+                    android:textColor="@color/white" />
+
+                <Button
+                    android:id="@+id/btn_cancel"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/btn_confirm"
+                    android:layout_below="@id/Et_venue"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/bg"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="cancel"
+                    android:textColor="@color/white" />
+
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+
+    </ScrollView>
+</LinearLayout>

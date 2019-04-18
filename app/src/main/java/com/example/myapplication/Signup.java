@@ -49,7 +49,7 @@ DatabaseReference reference;
                 Et_username.setText("");
                 Et_address.setText("");
                 Et_contact.setText("");
-                //startActivity(new Intent(Signup.this,Addteam.class));
+                startActivity(new Intent(Signup.this,Addteam.class));
             }
         });
     }

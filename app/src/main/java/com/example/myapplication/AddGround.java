@@ -49,6 +49,8 @@ public class AddGround extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_ground);
+
+        init();
         addground.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,25 +61,25 @@ public class AddGround extends AppCompatActivity {
                 String GroundId = groundRef.push().getKey();
                 //String CaptainId = captainRef.push().getKey();
                 imageRef = storage.getReference("Ground images/" + GroundId);
-                uid=auth.getCurrentUser().getUid();
+                uid = auth.getCurrentUser().getUid();
 
 
-                uploaddata(groundname, address, Groundemail,contact,GroundId);
+                uploaddata(groundname, address, Groundemail, contact, GroundId);
                 Toast.makeText(AddGround.this, "Ground added", Toast.LENGTH_SHORT).show();
                 //startActivity(new Intent(AddGround.this,onlinemain.class));
             }
         });
 
-Profile.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        opengallery(v);
-    }
-});
+        Profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                opengallery(v);
+            }
+        });
 
     }
 
-    private void uploaddata(final String groundname,final String address,final String groundemail, final String contact, final String groundId) {
+    private void uploaddata(final String groundname, final String address, final String groundemail, final String contact, final String groundId) {
 
         BitmapDrawable drawable = (BitmapDrawable) Profile.getDrawable();
         Bitmap bitmap = drawable.getBitmap();
@@ -92,9 +94,22 @@ Profile.setOnClickListener(new View.OnClickListener() {
                     public void onComplete(@NonNull Task<Uri> task) {
                         if ((task.isSuccessful())) {
                             String imageUrl = task.getResult().toString();
-                            getgroundviewlist ground = new getgroundviewlist(imageUrl,groundname,address,groundemail,contact,groundId);
+                            getgroundviewlist ground = new getgroundviewlist(imageUrl, groundname, address, groundemail, contact, groundId);
 
-                            groundRef.child(uid).child("Grounds").child(groundId).setValue(ground);
+                            String groundId=groundRef.push().getKey();
+
+                            groundRef.child(groundId).setValue(ground).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()){
+                                        Toast.makeText(AddGround.this, "ground added", Toast.LENGTH_SHORT).show();
+
+                                    }
+                                    else {
+                                        Toast.makeText(AddGround.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
                             //captainRef.child(uid).child("Team").child(teamId).child("Captain").child(CaptainId).child("id").setValue(CaptainId);
                             //captainRef.child(uid).child("Team").child(teamId).child("Captain").child(CaptainId).child("name").setValue(CaptainId);
                            /* captainRef.child(teamId).child("Captain").child(CaptainId).child("id").setValue(CaptainId);

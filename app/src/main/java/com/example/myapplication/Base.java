@@ -163,7 +163,7 @@ public class Base extends AppCompatActivity {
     public void onBackPressed() {
 
         if (drawerLayout.isDrawerOpen(Gravity.START)) {
-            drawerLayout.closeDrawer(Gravity.START);
+            drawerLayout.closeDrawer(Gravity.END);
         } else{
 
             super.onBackPressed();

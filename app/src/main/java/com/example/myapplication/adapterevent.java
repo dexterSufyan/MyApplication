@@ -11,10 +11,10 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 public class adapterevent extends RecyclerView.Adapter<bookeventviewholder> {
-    ArrayList<geteventlist> geteventlists;
+    ArrayList<geteventviewlist> geteventlists;
     Context event;
 
-    public adapterevent(ArrayList<geteventlist> geteventlists, Context event) {
+    public adapterevent(ArrayList<geteventviewlist> geteventlists, Context event) {
         this.geteventlists = geteventlists;
         this.event = event;
     }
@@ -23,21 +23,21 @@ public class adapterevent extends RecyclerView.Adapter<bookeventviewholder> {
     @Override
     public bookeventviewholder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         LayoutInflater inflater = LayoutInflater.from(event);
-        View view=inflater.inflate(R.layout.bookeventview,viewGroup,false);
-        bookeventviewholder bookeventviewholder =new bookeventviewholder(view);
+        View view = inflater.inflate(R.layout.bookeventview, viewGroup, false);
+        bookeventviewholder bookeventviewholder = new bookeventviewholder(view);
 
         return bookeventviewholder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull bookeventviewholder bookeventviewholder, int i) {
-        final geteventlist geteventlist = geteventlists.get(i);
-        bookeventviewholder.date.setText(geteventlist.getDate());
-        bookeventviewholder.time.setText(geteventlist.getTime());
+        final geteventviewlist geteventlist = geteventlists.get(i);
+        bookeventviewholder.date.setText(geteventlist.getEvent_name());
+        bookeventviewholder.time.setText(geteventlist.getEvent_url());
         bookeventviewholder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                event.startActivity(new Intent(event,EventDetails.class));
+                event.startActivity(new Intent(event, EventDetails.class));
             }
         });
     }

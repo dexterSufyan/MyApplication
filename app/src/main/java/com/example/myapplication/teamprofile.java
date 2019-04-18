@@ -19,7 +19,7 @@ Button Sendrequest;
     Sendrequest.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            startActivity(new Intent());
+            startActivity(new Intent(teamprofile.this,booking.class));
         }
     });
     contact.setOnClickListener(new View.OnClickListener() {

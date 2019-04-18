@@ -11,6 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -35,9 +37,11 @@ public class Home extends Fragment {
     ArrayList<geteventviewlist> eventlist;
     bridgeEvents Event;
     RecyclerView listEvent;
-
+FirebaseUser user;
+FirebaseAuth auth;
     FirebaseDatabase teamDataBase;
     DatabaseReference teamRef;
+    DatabaseReference refteam;
     DatabaseReference captainRef;
 
     public Home() {
@@ -56,15 +60,18 @@ public class Home extends Fragment {
         teamlist = new ArrayList<>();
         groundlist= new ArrayList<>();
         eventlist= new ArrayList<>();
-
+user=auth.getCurrentUser();
+auth= FirebaseAuth.getInstance();
         captainArrayList=new ArrayList<>();
         team=new bridgeteam(captainArrayList,getContext());
-        listteam=view.findViewById(R.id.team_list);
-        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
-        listteam.setAdapter(team);
+listteam=view.findViewById(R.id.team_list);
+       LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
+ listteam.setAdapter(team);
 
         teamDataBase=FirebaseDatabase.getInstance();
         teamRef=teamDataBase.getReference("Teams");
+        refteam=teamDataBase.getReference(user.getUid()).child("Teams");
+
 
         teamRef.addChildEventListener(new ChildEventListener() {
             @Override
@@ -110,36 +117,64 @@ public class Home extends Fragment {
 
             }
         });
+teamRef.addChildEventListener(new ChildEventListener() {
+    @Override
+    public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+        getteamviewlist teams = dataSnapshot.getValue(getteamviewlist.class);
+        teamlist.add(teams);
+          team.notifyDataSetChanged();
 
+    }
 
-       // teamlist.add(new getteamviewlist(R.drawable.img_profile, "yzx","work"));
-       // teamlist.add(new getteamviewlist(R.drawable.img_profile, "abc", "xz"));
+    @Override
+    public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
+    }
 
+    @Override
+    public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
 
-        //groundlist.add(new getgroundviewlist(R.drawable.img_profile,"gymkhanna","garden east"));
-       // groundlist.add(new getgroundviewlist(R.drawable.img_profile,"ali academy","garden west"));
+    }
 
-        //eventlist.add(new geteventviewlist(R.drawable.img_profile,"tournament","url"));
-        ground= new bridgeground(groundlist,getContext());
-    //    team =new bridgeteam(teamlist,getContext());
-        Event= new bridgeEvents(eventlist,getContext());
+    @Override
+    public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
+    }
 
+    @Override
+    public void onCancelled(@NonNull DatabaseError databaseError) {
 
-        listground=view.findViewById(R.id.Ground_list);
-        listEvent=view.findViewById(R.id.Event_list);
-
-
-        LinearLayoutManager groundLayout=new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
-        LinearLayoutManager eventLayout=new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
-      //  listteam.setLayoutManager(linearLayoutManager);
-        listground.setLayoutManager(groundLayout);
-        listEvent.setLayoutManager(eventLayout);
-
-        //listteam.setAdapter(team);
-        listground.setAdapter(ground);
-        listEvent.setAdapter(Event);
+    }
+});
+//
+//       // teamlist.add(new getteamviewlist(R.drawable.img_profile, "yzx","work"));
+//       // teamlist.add(new getteamviewlist(R.drawable.img_profile, "abc", "xz"));
+//
+//
+//
+//        //groundlist.add(new getgroundviewlist(R.drawable.img_profile,"gymkhanna","garden east"));
+//       // groundlist.add(new getgroundviewlist(R.drawable.img_profile,"ali academy","garden west"));
+//
+//        //eventlist.add(new geteventviewlist(R.drawable.img_profile,"tournament","url"));
+//        ground= new bridgeground(groundlist,getContext());
+//    //    team =new bridgeteam(teamlist,getContext());
+//        Event= new bridgeEvents(eventlist,getContext());
+//
+//
+//
+//        //listground=view.findViewById(R.id.Ground_list);
+//        //listEvent=view.findViewById(R.id.Event_list);
+//
+//
+////        LinearLayoutManager groundLayout=new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
+////        LinearLayoutManager eventLayout=new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
+////      //  listteam.setLayoutManager(linearLayoutManager);
+////        listground.setLayoutManager(groundLayout);
+////        listEvent.setLayoutManager(eventLayout);
+////
+////        //listteam.setAdapter(team);
+////        listground.setAdapter(ground);
+////        listEvent.setAdapter(Event);
 
         return view;
 
