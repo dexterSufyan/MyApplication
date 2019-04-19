@@ -108,9 +108,12 @@ public class Addplayer extends AppCompatActivity {
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if (task.isSuccessful()) {
                                                 Toast.makeText(Addplayer.this, "added in db" + playerId, Toast.LENGTH_SHORT).show();
-                                                //   startActivity(new Intent(Addplayer.this, PlayerList.class));
-                                            } else
+                                                  startActivity(new Intent(Addplayer.this, PlayerList.class));
+                                            } else {
                                                 Toast.makeText(Addplayer.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
+                                                Log.e("Add player", "task exception" + task.getException().toString() + "  " + task.getResult());
+
+                                            }
                                         }
                                     });
 
@@ -138,7 +141,7 @@ public class Addplayer extends AppCompatActivity {
                             });
 
 
-                            Log.e("Add player ","team Id 2  "+teamId);
+
 
 
                         } else Toast.makeText(Addplayer.this, task

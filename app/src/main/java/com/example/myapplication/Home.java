@@ -4,7 +4,9 @@ package com.example.myapplication;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -30,6 +32,11 @@ public class Home extends Fragment {
     ArrayList<getteamviewlist> teamlist;
     ArrayList<captain> captainArrayList;
     bridgeteam team;
+    ViewPager pager;
+    FragmentAdapter adapter;
+    ArrayList<Fragment> list;
+    TabLayout tabs;
+
     RecyclerView listteam;
     ArrayList<getgroundviewlist> groundlist;
     bridgeground ground;
@@ -40,13 +47,19 @@ public class Home extends Fragment {
 FirebaseUser user;
 FirebaseAuth auth;
     FirebaseDatabase teamDataBase;
+    FirebaseDatabase groundDatabase;
     DatabaseReference teamRef;
+    DatabaseReference groundRef;
     DatabaseReference refteam;
     DatabaseReference captainRef;
 
     public Home() {
         // Required empty public constructor
+
+
+
     }
+
 
 
     @Override
@@ -54,24 +67,44 @@ FirebaseAuth auth;
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         //list = container.findViewById(R.id.team_list);
+        pager=container.findViewById(R.id.view_pager);
+        list=new ArrayList<>();
+
+        adapter=new FragmentAdapter(getChildFragmentManager(),list);
+        tabs=container.findViewById(R.id.tabs);
+        list.add(new newsFragment());
+        list.add(new teamview());
+        list.add(new Groundview());
+        list.add(new Eventview());
+        pager.setAdapter(adapter);
+        tabs.setupWithViewPager(pager);
+        tabs.getTabAt(0).setIcon(android.R.drawable.btn_star);
+        tabs.getTabAt(1).setIcon(android.R.drawable.ic_menu_call);
+        tabs.getTabAt(2).setIcon(android.R.drawable.ic_dialog_email);
+
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         teamlist = new ArrayList<>();
         groundlist= new ArrayList<>();
         eventlist= new ArrayList<>();
+auth=FirebaseAuth.getInstance();
 user=auth.getCurrentUser();
-auth= FirebaseAuth.getInstance();
         captainArrayList=new ArrayList<>();
         team=new bridgeteam(captainArrayList,getContext());
+        ground= new bridgeground(groundlist,getContext());
 listteam=view.findViewById(R.id.team_list);
-       LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
+
+//LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
  listteam.setAdapter(team);
+ //listground.setAdapter(ground);
+
 
         teamDataBase=FirebaseDatabase.getInstance();
+        //groundDatabase=FirebaseDatabase.getInstance();
         teamRef=teamDataBase.getReference("Teams");
-        refteam=teamDataBase.getReference(user.getUid()).child("Teams");
-
+        //efteam=teamDataBase.getReference(user.getUid()).child("Teams");
+        //groundRef=groundDatabase.getReference("Ground");
 
         teamRef.addChildEventListener(new ChildEventListener() {
             @Override
@@ -117,35 +150,64 @@ listteam=view.findViewById(R.id.team_list);
 
             }
         });
-teamRef.addChildEventListener(new ChildEventListener() {
-    @Override
-    public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-        getteamviewlist teams = dataSnapshot.getValue(getteamviewlist.class);
-        teamlist.add(teams);
-          team.notifyDataSetChanged();
-
-    }
-
-    @Override
-    public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-    }
-
-    @Override
-    public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-    }
-
-    @Override
-    public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-    }
-
-    @Override
-    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-    }
-});
+//refteam.addChildEventListener(new ChildEventListener() {
+//    @Override
+//    public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+//        getteamviewlist teams = dataSnapshot.getValue(getteamviewlist.class);
+//        teamlist.add(teams);
+//          team.notifyDataSetChanged();
+//
+//    }
+//
+//    @Override
+//    public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+//
+//    }
+//
+//    @Override
+//    public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+//
+//    }
+//
+//    @Override
+//    public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+//
+//    }
+//
+//    @Override
+//    public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//    }
+//});
+//groundRef.addChildEventListener(new ChildEventListener() {
+//    @Override
+//    public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+//        getgroundviewlist grounds =dataSnapshot.getValue(getgroundviewlist.class);
+//        groundlist.add(grounds);
+//        ground.notifyDataSetChanged();
+//
+//    }
+//
+//    @Override
+//    public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+//
+//    }
+//
+//    @Override
+//    public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+//
+//    }
+//
+//    @Override
+//    public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+//
+//    }
+//
+//    @Override
+//    public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//    }
+//});
 //
 //       // teamlist.add(new getteamviewlist(R.drawable.img_profile, "yzx","work"));
 //       // teamlist.add(new getteamviewlist(R.drawable.img_profile, "abc", "xz"));
@@ -162,7 +224,7 @@ teamRef.addChildEventListener(new ChildEventListener() {
 //
 //
 //
-//        //listground=view.findViewById(R.id.Ground_list);
+//
 //        //listEvent=view.findViewById(R.id.Event_list);
 //
 //

@@ -64,7 +64,7 @@ public class AddGround extends AppCompatActivity {
                 uid = auth.getCurrentUser().getUid();
 
 
-                uploaddata(groundname, address, Groundemail, contact, GroundId);
+                  uploaddata(groundname, address, Groundemail, contact, GroundId);
                 Toast.makeText(AddGround.this, "Ground added", Toast.LENGTH_SHORT).show();
                 //startActivity(new Intent(AddGround.this,onlinemain.class));
             }
