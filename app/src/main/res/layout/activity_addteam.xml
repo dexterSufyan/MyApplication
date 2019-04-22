@@ -44,7 +44,7 @@
                 android:layout_height="100dp"
                 android:layout_centerHorizontal="true"
                 android:layout_alignParentTop="true"
-                android:src="@drawable/ic_camera_alt_black_24dp" />
+                android:src="@mipmap/ic_launcher" />
 
             <EditText
                 android:id="@+id/Et_sign_username"

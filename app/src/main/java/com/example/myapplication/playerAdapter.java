@@ -39,11 +39,22 @@ public class playerAdapter extends RecyclerView.Adapter<playerViewHolder> {
 
 
     @Override
-    public void onBindViewHolder(@NonNull playerViewHolder playerViewHolder, int i) {
+    public void onBindViewHolder(@NonNull final playerViewHolder playerViewHolder, int i) {
         final Player player=players.get(i);
         database=FirebaseDatabase.getInstance();
-        reference=database.getReference().child("books").child(player.getPlayerId());
+        //reference=database.getReference().child("books").child(player.getPlayerId());
+         reference.addValueEventListener(new ValueEventListener() {
+             @Override
+             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            Player player= dataSnapshot.getValue(Player.class);
+                 playerViewHolder.playername.setText(player.playername);
+             }
 
+             @Override
+             public void onCancelled(@NonNull DatabaseError databaseError) {
+
+             }
+         });
     }
 
             @Override

@@ -96,10 +96,8 @@ public class Addplayer extends AppCompatActivity {
                                 @Override
                                 public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
-                                    getteamviewlist team=dataSnapshot.getValue(getteamviewlist.class);
-                                    teamId=team.getTeamId();
-                                    Log.e("Add player ","team Id "+dataSnapshot);
-                                    Log.e("Add player ","team Id "+teamId);
+                                    getteamviewlist team = dataSnapshot.getValue(getteamviewlist.class);
+                                    teamId = team.getTeamId();
 
                                     Player player = new Player(playerId, nameplayer, nameteam, typeplayer, imageUrl);
                                     Toast.makeText(Addplayer.this, "complete " + playerId, Toast.LENGTH_SHORT).show();
@@ -108,11 +106,13 @@ public class Addplayer extends AppCompatActivity {
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if (task.isSuccessful()) {
                                                 Toast.makeText(Addplayer.this, "added in db" + playerId, Toast.LENGTH_SHORT).show();
-                                                  startActivity(new Intent(Addplayer.this, PlayerList.class));
-                                            } else {
-                                                Toast.makeText(Addplayer.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
-                                                Log.e("Add player", "task exception" + task.getException().toString() + "  " + task.getResult());
 
+                                                startActivity(new Intent(Addplayer.this, PlayerList.class));
+                                            }
+                                            else {
+
+                                               // Log.e("Add player ","exception "+task.getException());
+                                             //   Toast.makeText(Addplayer.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
                                             }
                                         }
                                     });
@@ -141,11 +141,11 @@ public class Addplayer extends AppCompatActivity {
                             });
 
 
-
-
-
-                        } else Toast.makeText(Addplayer.this, task
-                                .getException().toString(), Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(Addplayer.this, task
+                                    .getException().toString(), Toast.LENGTH_SHORT).show();
+                            Log.e("Add player", "task exception" + task.getException().toString() + "  " + task.getResult());
+                        }
                     }
                 });
 
